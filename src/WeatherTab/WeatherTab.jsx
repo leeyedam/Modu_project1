@@ -66,10 +66,9 @@ export default function WeatherTab() {
         ".css-1aquho2-MuiTabs-indicator": {
           backgroundColor: "#fff",
         },
-             "MuiButtonBase-root MuiTab-root MuiTab-textColor#fff MuiTab-fullWidth Mui-selected css-ybb32w":
-          {
-            backgroundColor: "#fff",
-          },
+             ".css-1dxb50 .css-1aquho2-MuiTabs-indicator": {
+          backgroundColor: "#fff",
+        },
       }}
     >
       <Box sx={{ borderBottom: 1, borderColor: "#fff" }}>
