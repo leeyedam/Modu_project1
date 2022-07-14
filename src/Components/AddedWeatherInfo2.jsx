@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CurrentWeatherIcon from "../CurrentWeatherIcon/CurrentWeatherIcon";
 import { uesSaveWeatherStore } from "../Store/uesSaveWeatherStore";
+import { useCountryStore } from "../Store/useCountryStore";
 import { useCountryStore2 } from "../Store/useCountryStore2";
 
 const theme = createTheme();
@@ -15,6 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(10),
   textAlign: "center",
   color: "white",
+  borderRadius: 20,
 }));
 
 const AddedItem = styled(Paper)(({ theme }) => ({
@@ -24,6 +26,7 @@ const AddedItem = styled(Paper)(({ theme }) => ({
   paddingBottom: theme.spacing(5.8),
   textAlign: "center",
   color: "white",
+  borderRadius: 20,
 }));
 
 theme.typography.h2 = {
@@ -89,6 +92,8 @@ function AddedWeatherInfo2() {
     countryTempMax,
   } = useCountryStore2();
 
+  const { setClearHourly } = useCountryStore();
+
   const { weatherList, setEditMode, setEditModeOff, setSelectedIndex } =
     uesSaveWeatherStore();
 
@@ -99,6 +104,12 @@ function AddedWeatherInfo2() {
     getWeather(addedCountryName);
   }, []);
 
+  function handleClick() {
+    setEditMode();
+    setSelectedIndex(1);
+    navigete("/addWeather");
+  }
+
   return (
     <ThemeProvider theme={theme}>
       {weatherList[1] ? (
@@ -106,11 +117,7 @@ function AddedWeatherInfo2() {
           <AddedItem
             elevation={6}
             style={{ cursor: "pointer" }}
-            onClick={() => {
-              setEditMode();
-              setSelectedIndex(1);
-              navigete("/addWeather");
-            }}
+            onClick={handleClick}
           >
             <Box
               sx={{ display: "flex" }}
@@ -189,6 +196,7 @@ function AddedWeatherInfo2() {
           onClick={() => {
             navigete("/addWeather");
             setEditModeOff();
+            setClearHourly();
           }}
         >
           추가하기 +

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CurrentWeatherIcon from "../CurrentWeatherIcon/CurrentWeatherIcon";
 import { uesSaveWeatherStore } from "../Store/uesSaveWeatherStore";
+import { useCountryStore } from "../Store/useCountryStore";
 import { useCountryStore1 } from "../Store/useCountryStore1";
 
 const theme = createTheme();
@@ -15,6 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(10),
   textAlign: "center",
   color: "white",
+  borderRadius: 20,
 }));
 
 const AddedItem = styled(Paper)(({ theme }) => ({
@@ -24,6 +26,7 @@ const AddedItem = styled(Paper)(({ theme }) => ({
   paddingBottom: theme.spacing(5.8),
   textAlign: "center",
   color: "white",
+  borderRadius: 20,
 }));
 
 theme.typography.h2 = {
@@ -89,15 +92,27 @@ function AddedWeatherInfo1() {
     countryTempMax,
   } = useCountryStore1();
 
-  const { weatherList, setEditMode, setEditModeOff, setSelectedIndex } =
-    uesSaveWeatherStore();
+  const {
+    weatherList,
+    setEditMode,
+    setEditModeOff,
+    setSelectedIndex,
+    selectedIndex,
+  } = uesSaveWeatherStore();
 
+  const { setClearHourly } = useCountryStore();
   const addedCountryName = weatherList[0]?.countryName;
 
   useEffect(() => {
     if (!weatherList[0]) return;
     getWeather(addedCountryName);
   }, []);
+
+  function handleClick() {
+    setEditMode();
+    setSelectedIndex(0);
+    navigete("/addWeather");
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -106,11 +121,7 @@ function AddedWeatherInfo1() {
           <AddedItem
             elevation={6}
             style={{ cursor: "pointer" }}
-            onClick={() => {
-              setEditMode();
-              setSelectedIndex(0);
-              navigete("/addWeather");
-            }}
+            onClick={handleClick}
           >
             <Box
               sx={{ display: "flex" }}
@@ -189,6 +200,7 @@ function AddedWeatherInfo1() {
           onClick={() => {
             navigete("/addWeather");
             setEditModeOff();
+            setClearHourly();
           }}
         >
           추가하기 +

@@ -24,6 +24,7 @@ const ItemMain = styled(Paper)(({ theme }) => ({
   paddingBottom: theme.spacing(21),
   textAlign: "center",
   color: "white",
+  borderRadius: 20,
 }));
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -32,6 +33,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(10),
   textAlign: "center",
   color: "white",
+  borderRadius: 20,
 }));
 
 function Weather() {

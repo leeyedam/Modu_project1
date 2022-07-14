@@ -43,7 +43,7 @@ theme.typography.h4 = {
 };
 
 theme.typography.h5 = {
-  fontSize: ".4rem",
+  fontSize: ".8rem",
 
   "@media (min-width:600px)": {
     fontSize: ".9rem",
@@ -96,7 +96,7 @@ function BarGraph({ num }) {
                       gutterBottom
                       noWrap
                     >
-                      {wind_speed}m/s
+                      {wind_speed}
                     </Typography>
                     <Slider
                       getAriaLabel={() => "Temperature"}
@@ -106,8 +106,8 @@ function BarGraph({ num }) {
                       getAriaValueText={valuetext}
                       defaultValue={wind_speed}
                       valueLabelDisplay="auto"
-                      // marks={marks}
                       color="primary"
+                      aria-label="Disabled slider"
                     />
                     <Typography variant="h4" noWrap>
                       {new Date(dt * 1000).getHours() >= 10 ? (

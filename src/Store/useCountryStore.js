@@ -77,7 +77,8 @@ export const useCountryStore = create((set) => ({
   },
   setClearHourly: () => {
     set({
-      hourly: null,
+      countryName: "",
+      hourly: "",
     });
   },
   setCancelError: () => {

@@ -63,7 +63,9 @@ export const useCountryStore2 = create((set) => ({
   },
   setClearHourly: () => {
     set({
-      hourly: null,
+      lat: "",
+      lon: "",
+      countryName: "",
     });
   },
 }));

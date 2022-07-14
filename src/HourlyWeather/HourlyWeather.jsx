@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
 import { useCountryStore } from "../Store/useCountryStore";
 import { useEffect } from "react";
+import { useMainStore } from "../Store/useMainStore";
 
 const theme = createTheme();
 
@@ -83,7 +84,7 @@ theme.typography.h6 = {
 };
 
 function HourlyWeather() {
-  const { hourly, getHourlyWeather } = useCountryStore();
+  const { hourly, getHourlyWeather } = useMainStore();
 
   useEffect(() => {
     getHourlyWeather(37.5683, 126.9778);
@@ -100,7 +101,7 @@ function HourlyWeather() {
           }}
         >
           {hourly?.slice(0, 7).map((hourInfo, i) => (
-            <Typography variant="h4" mr={2.5} key={i} noWrap>
+            <Typography variant="h4" mr={2} key={i} noWrap>
               {new Date(hourInfo.dt * 1000).getHours() >= 10 ? (
                 <p>{new Date(hourInfo.dt * 1000).getHours()}시</p>
               ) : (
@@ -119,7 +120,7 @@ function HourlyWeather() {
           {hourly?.slice(0, 7).map((hourInfo, i) => (
             <Typography
               variant="h2"
-              mr={2.2}
+              mr={1.8}
               key={i}
               gutterBottom
               sx={{
@@ -140,7 +141,7 @@ function HourlyWeather() {
           }}
         >
           {hourly?.slice(0, 7).map((hourInfo, i) => (
-            <Typography variant="h5" pr={0.5} mr={1.1} key={i}>
+            <Typography variant="h5" mr={1.1} key={i}>
               {hourInfo.temp}
             </Typography>
           ))}

@@ -103,7 +103,7 @@ function BarGraph({ num }) {
                     valueLabelDisplay="auto"
                     // marks={marks}
                     color="primary"
-                    disableSwap
+                    aria-label="Disabled slider"
                   />
                   <Typography variant="h4" noWrap>
                     {new Date(dt * 1000).getHours() >= 10 ? (

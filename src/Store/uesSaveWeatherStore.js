@@ -19,18 +19,13 @@ export const uesSaveWeatherStore = create((set) => ({
     });
   },
   editWeather: (idx, weather) => {
-    set(
-      ({ weatherList }) => {
-        weatherList[idx] = weather;
-        localStorage.setItem("weatherList", JSON.stringify(weatherList));
-        return {
-          weatherList,
-        };
-      },
-      {
-        selectedIndex: idx,
-      }
-    );
+    set(({ weatherList }) => {
+      weatherList[idx] = weather;
+      localStorage.setItem("weatherList", JSON.stringify(weatherList));
+      return {
+        weatherList,
+      };
+    });
   },
   clear: () => {
     set({
@@ -41,7 +36,7 @@ export const uesSaveWeatherStore = create((set) => ({
   setEditMode: () => {
     set({
       edit: true,
-      errorCountry: true,
+      // errorCountry: true,
     });
   },
   setEditModeOff: () => {

@@ -69,7 +69,12 @@ export default function WeatherTab() {
       }}
     >
       <Box sx={{ borderBottom: 1, borderColor: "#fff" }}>
-        <Tabs value={value} onChange={handleChange} variant="fullWidth">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="fullWidth"
+          textColor="#fff"
+        >
           <Tab label="날씨" {...a11yProps(0)} />
           <Tab label="습도" {...a11yProps(1)} />
           <Tab label="바람" {...a11yProps(2)} />
