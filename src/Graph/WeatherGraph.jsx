@@ -101,7 +101,6 @@ function LineGraph({ num }) {
                   valueLabelDisplay="auto"
                   color="primary"
                   aria-label="Disabled slider"
-disabled 
                 />
                 <Typography variant="h4" noWrap>
                   {new Date(dt * 1000).getHours() >= 10 ? (
