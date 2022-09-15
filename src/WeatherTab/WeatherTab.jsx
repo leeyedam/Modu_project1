@@ -66,6 +66,9 @@ export default function WeatherTab() {
         ".css-1aquho2-MuiTabs-indicator": {
           backgroundColor: "#fff",
         },
+        ".css-1dxb50 .css-1aquho2-MuiTabs-indicator": {
+          backgroundColor: "#fff",
+        },
       }}
     >
       <Box sx={{ borderBottom: 1, borderColor: "#fff" }}>
